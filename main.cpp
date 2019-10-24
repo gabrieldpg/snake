@@ -25,15 +25,15 @@ void Draw() {
 
 	system("cls");
 
-	for (int i = 0; i < width; i++)
+	for (int i = 0; i < width+2; i++)
 		cout << "#";
 	cout << endl;
 
 	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
+		for (int j = 0; j < width+2; j++) {
 			if (j == 0)
 				cout << "#";
-			else if (j == width-1)
+			else if (j == width+1)
 				cout << "#";
 			else if (i == y && j == x)
 				cout << "O";
@@ -45,7 +45,7 @@ void Draw() {
 		cout << endl;
 	}
 
-	for (int i = 0; i < width; i++)
+	for (int i = 0; i < width+2; i++)
 		cout << "#";
 	cout << endl;
 
@@ -97,6 +97,12 @@ void Logic() {
 
 	if (x > width || x < 0 || y > height || y < 0)
 		gameOver = true;
+
+	if (x == fruitX && y == fruitY) {
+		score += 10;
+		fruitX = rand() % width;
+		fruitY = rand() % height;
+	}
 
 }
 
